@@ -1,0 +1,72 @@
+.create-post-modal {
+  background-color: #ffffff;
+  border-radius: 25px;
+  box-sizing: border-box;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  padding: 20px;
+}
+
+.create-post-modal-file-box {
+  align-items: center;
+  border: 5px dashed #f2e6ff;
+  border-radius: 50px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.file-input-container input[type="file"] {
+  display: none;
+}
+
+.file-upload-label {
+  background-color: #ad66ff;
+  display: block;
+  line-height: 20px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.post-text-input {
+  border: 1px solid #f2e6ff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: 100px;
+  padding: 10px;
+  resize: none;
+  width: 100%;
+}
+
+.post-text-input-container {
+  margin-top: 20px;
+}
+
+.post-text-input-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  background-color: #851aff;
+}
+
+.submit-button-container {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.submit-button,
+.file-upload-label {
+  border-radius: 10px;
+  border: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  height: 40px;
+  width: 100px;
+}
