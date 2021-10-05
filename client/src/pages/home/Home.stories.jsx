@@ -14,12 +14,14 @@ HomeStory.args = {
     {
       description: 'This is a picture of the forest near my house',
       imageUrl: 'https://decentralized-mvp.s3.amazonaws.com/blog/post-photo-1.jpg',
-      user: '0xBB1f2233551FbfD2A534be15a1A03c57CAF28eF7'
+      user: '0xBB1f2233551FbfD2A534be15a1A03c57CAF28eF7',
+      id: 0
     },
     {
       description: 'This is a picture of the forest near my house',
       imageUrl: 'https://decentralized-mvp.s3.amazonaws.com/blog/post-photo-1.jpg',
-      user: '0xBB1f2233551FbfD2A534be15a1A03c57CAF28eF7'
+      user: '0xBB1f2233551FbfD2A534be15a1A03c57CAF28eF7',
+      id: 1
     }
   ]
 };

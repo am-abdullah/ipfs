@@ -9,9 +9,9 @@ export function Home({
   return (
     <div className="home">
       <OpenModalBox/>
-      {posts.map((post, index) => (
+      {posts.map(post => (
         <Post
-          key={index}
+          key={post.id}
           description={post.description}
           imageUrl={post.imageUrl}
           user={post.user}
