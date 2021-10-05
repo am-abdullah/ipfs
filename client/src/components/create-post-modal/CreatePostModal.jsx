@@ -12,7 +12,7 @@ export default function CreatePostModal() {
           <IoCloudUploadOutline/>
         </IconContext.Provider>
         <div className="file-input-container">
-          <label htmlFor="file-upload" className="file-upload-label">
+          <label htmlFor="file-upload" className="app-button file-upload-label">
             <input type="file" id="file-upload" name="file-upload" className="file-upload-input" accept="image/png, image/gif, image/jpeg"/>
             Browse
           </label>
@@ -23,7 +23,7 @@ export default function CreatePostModal() {
         <textarea className="post-text-input" id="post-text-input" name="post-text-input"></textarea>
       </div>
       <div className="submit-button-container">
-        <button className="submit-button" type="submit">Submit</button>
+        <button className="app-button app-button-primary" type="submit">Submit</button>
       </div>
     </div>
   );
