@@ -1,4 +1,4 @@
-.create-post-modal {
+.create-post-form {
   background-color: #ffffff;
   border-radius: 25px;
   box-sizing: border-box;
@@ -9,7 +9,7 @@
   padding: 20px;
 }
 
-.create-post-modal-file-box {
+.create-post-form-file-box {
   align-items: center;
   border: 5px dashed #f2e6ff;
   border-radius: 50px;

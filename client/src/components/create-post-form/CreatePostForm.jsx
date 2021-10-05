@@ -2,12 +2,12 @@ import React from 'react';
 import { IconContext } from 'react-icons'
 import { IoCloudUploadOutline } from 'react-icons/io5'
 
-import './CreatePostModal.css';
+import './CreatePostForm.css';
 
-export default function CreatePostModal() {
+export default function CreatePostForm() {
   return (
-    <div className="create-post-modal">
-      <div className="create-post-modal-file-box">
+    <div className="create-post-form">
+      <div className="create-post-form-file-box">
         <IconContext.Provider value={{ size: '100px', color: '#e4ccff' }}>
           <IoCloudUploadOutline/>
         </IconContext.Provider>
