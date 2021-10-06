@@ -6,7 +6,7 @@ import './CreatePostForm.css';
 
 export default function CreatePostForm() {
   return (
-    <div className="create-post-form">
+    <form className="create-post-form">
       <div className="create-post-form-file-box">
         <IconContext.Provider value={{ size: '100px', color: '#e4ccff' }}>
           <IoCloudUploadOutline/>
@@ -25,6 +25,6 @@ export default function CreatePostForm() {
       <div className="submit-button-container">
         <button className="app-button app-button-primary" type="submit">Submit</button>
       </div>
-    </div>
+    </form>
   );
 }
