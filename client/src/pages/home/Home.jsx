@@ -63,6 +63,10 @@ function OpenModalBox({
   );
 }
 
+/**
+ * @TODO Implement fetching of posts from back-end
+ * @TODO Implement uploading posts
+ */
 export function HomeWrapper() {
   const [postForm, setPostForm] = useState({ 'file-upload': '', 'post-text-input': '' });
 
