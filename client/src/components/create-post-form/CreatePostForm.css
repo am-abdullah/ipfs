@@ -20,6 +20,11 @@
   display: none;
 }
 
+.file-name {
+  font-weight: bold;
+  text-align: center;
+}
+
 .file-upload-label {
   background-color: #ad66ff;
   display: block;
