@@ -1,3 +1,9 @@
+.close-modal-button-container {
+  cursor: pointer;
+  padding: 10px;
+  text-align: right;
+}
+
 .home .open-modal-box {
   background-color: #fff;
   border-radius: 10px;

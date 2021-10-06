@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { IoClose } from 'react-icons/io5'
 import Post from  '../../components/post/Post';
 import CreatePostForm from '../../components/create-post-form/CreatePostForm';
 
@@ -33,6 +34,9 @@ export function Home({
           }
         }}
       >
+        <div className="close-modal-button-container">
+          <IoClose onClick={() => setModalIsOpen(false)}/>
+        </div>
         <CreatePostForm/>
       </Modal>
     </div>
