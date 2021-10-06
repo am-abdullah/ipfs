@@ -7,7 +7,11 @@ import CreatePostForm from '../../components/create-post-form/CreatePostForm';
 import './Home.css';
 
 export function Home({
-  posts
+  fileName,
+  onChange,
+  onSubmit,
+  posts,
+  postTextValue
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -37,7 +41,12 @@ export function Home({
         <div className="close-modal-button-container">
           <IoClose onClick={() => setModalIsOpen(false)}/>
         </div>
-        <CreatePostForm/>
+        <CreatePostForm
+          fileName={fileName}
+          onChange={onChange}
+          onSubmit={onSubmit}
+          postTextValue={postTextValue}
+        />
       </Modal>
     </div>
   )
@@ -52,4 +61,31 @@ function OpenModalBox({
       <button className="app-button app-button-primary" onClick={onOpen}>Open Modal</button>
     </div>
   );
+}
+
+export function HomeWrapper() {
+  const [postForm, setPostForm] = useState({ 'file-upload': '', 'post-text-input': '' });
+
+  function onChange(event) {
+    const target = event.target;
+    const isFileInput = target.files !== undefined;
+    const newValue = isFileInput ? target.files[0] : target.value;
+
+    setPostForm(previousState => ({...previousState, [target.name]: newValue}));
+  }
+
+  function onSubmit(event) {
+    event.preventDefault();
+    console.log('postForm values', postForm);
+  }
+
+  return (
+    <Home
+      fileName={postForm['file-upload'] ? postForm['file-upload'].name : null}
+      onChange={onChange}
+      onSubmit={onSubmit}
+      posts={[]}
+      postTextValue={postForm['post-text-input']}
+    />
+  )
 }
