@@ -26,6 +26,12 @@ export function Home({
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          content: {
+            borderRadius: '25px',
+            boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'
+          }
+        }}
       >
         <CreatePostForm/>
       </Modal>
