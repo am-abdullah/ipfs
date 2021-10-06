@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Post from  '../../components/post/Post';
-import CreatePostModal from '../../components/create-post-modal/CreatePostModal';
+import CreatePostForm from '../../components/create-post-form/CreatePostForm';
 
 import './Home.css';
 
@@ -27,7 +27,7 @@ export function Home({
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
       >
-        <CreatePostModal/>
+        <CreatePostForm/>
       </Modal>
     </div>
   )
