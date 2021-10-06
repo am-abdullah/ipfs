@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import DecentralizedInstagram from './contracts/DecentralizedInstagram.json';
+// import DecentralizedInstagram from './contracts/DecentralizedInstagram.json';
 import getWeb3 from './getWeb3';
+import { HomeWrapper } from './pages/home/Home';
 
 import './App.css';
 
@@ -16,12 +17,12 @@ export default function App() {
 
       
       const networkId = await web3.eth.net.getId();
-      const networkData = DecentralizedInstagram.networks[networkId];
-      const decentralizedInstagram = new web3.eth.Contract(DecentralizedInstagram.abi, networkData.address);
+      // const networkData = DecentralizedInstagram.networks[networkId];
+      // const decentralizedInstagram = new web3.eth.Contract(DecentralizedInstagram.abi, networkData.address);
 
       const [account] = await web3.eth.getAccounts();
 
-      setDependencies(previousState => ({ ...previousState, web3, account, decentralizedInstagram, loaded: true }));
+      setDependencies(previousState => ({ ...previousState, web3, account, loaded: true }));
     })();
   }, []);
 
@@ -40,7 +41,7 @@ export default function App() {
   return (
     dependencies.loaded ?
       dependencies.account ?
-        <div>Welcome to Decentralized Instagram...</div> :
+        <HomeWrapper/> :
         <button onClick={connect} className="app-button app-button-primary">Connect</button>   
       :
       <div>loading....</div>
