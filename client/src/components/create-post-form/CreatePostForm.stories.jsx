@@ -9,4 +9,7 @@ export default {
 const Template = (args) => <CreatePostForm {...args}/>;
 
 export const CreatePostFormStory = Template.bind({});
-CreatePostFormStory.args = {};
+CreatePostFormStory.args = {
+  onChange: undefined,
+  onSubmit: event => event.preventDefault()
+};
