@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { IoClose } from 'react-icons/io5'
 import Post from  '../../components/post/Post';
 import CreatePostForm from '../../components/create-post-form/CreatePostForm';
+import {create} from "ipfs-http-client"
 
 import './Home.css';
 
@@ -14,7 +15,6 @@ export function Home({
   postTextValue
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
   return (
     <div className="home">
       <OpenModalBox
@@ -23,8 +23,8 @@ export function Home({
       {posts.map(post => (
         <Post
           key={post.id}
-          description={post.description}
-          imageUrl={post.imageUrl}
+          description={post.text}
+          imageUrl={`https://ipfs.infura.io/ipfs/${post.ipfsHash}`}
           user={post.user}
         />
       ))}
@@ -67,8 +67,20 @@ function OpenModalBox({
  * @TODO Implement fetching of posts from back-end
  * @TODO Implement uploading posts
  */
-export function HomeWrapper() {
+export function HomeWrapper({decentralizedInstagram,account}) {
   const [postForm, setPostForm] = useState({ 'file-upload': '', 'post-text-input': '' });
+  const [posts,setPosts] = useState([])
+
+  const client = create('https://ipfs.infura.io:5001/api/v0')
+
+  useEffect(()=>{
+    (async function(){
+      setupPostCreatedListener()
+      const loadedPosts = await decentralizedInstagram.methods.getPosts().call();
+      console.log('loadedPosts', loadedPosts);
+      setPosts(loadedPosts.reverse())
+    })();
+  },[])
 
   function onChange(event) {
     const target = event.target;
@@ -78,9 +90,25 @@ export function HomeWrapper() {
     setPostForm(previousState => ({...previousState, [target.name]: newValue}));
   }
 
-  function onSubmit(event) {
+ async function onSubmit(event) {
     event.preventDefault();
-    console.log('postForm values', postForm);
+    console.log('postForm values');
+    const file = postForm['file-upload']
+    const text = postForm['post-text-input']
+    // upload file
+    const added = await client.add(file)
+
+    // send post data to blockchain
+   
+  const sendPost =  await decentralizedInstagram.methods.createPost(added.path,text).send({from:account})
+    console.log('postForm = ',sendPost);
+  }
+
+  function setupPostCreatedListener() {
+   decentralizedInstagram.events.PostCreated({},(error,contractEvent)=>{
+      const {ipfsHash,text,id,user} = contractEvent.returnValues;
+      setPosts(previousState => [{ipfsHash,text,id,user},...previousState])
+    })
   }
 
   return (
@@ -88,7 +116,7 @@ export function HomeWrapper() {
       fileName={postForm['file-upload'] ? postForm['file-upload'].name : null}
       onChange={onChange}
       onSubmit={onSubmit}
-      posts={[]}
+      posts={posts}
       postTextValue={postForm['post-text-input']}
     />
   )

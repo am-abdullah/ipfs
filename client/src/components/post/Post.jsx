@@ -7,6 +7,7 @@ export default function Post({
   imageUrl,
   user
 }) {
+  console.log("description = ",description);
   return (
     <div className="post">
       <div className="post-header">
@@ -18,9 +19,7 @@ export default function Post({
         <img className="post-image" src={imageUrl} alt="user image"/>
       </div>
       <div className="post-description-container">
-        <UserBanner
-          user={user}
-        />
+        
         <p className="post-description">{description}</p>
       </div>
     </div>
